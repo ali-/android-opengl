@@ -63,7 +63,7 @@ class GLRenderer : GLSurfaceView.Renderer {
 				Global.triangles++
 				triangle.draw(enemy.matrix)
 			}
-			if (Global.player.checkCollision(enemy) && !Global.paused) {
+			if (Global.player.checkCollision(enemy.position) && !Global.paused) {
 				enemy.destroy()
 				Global.paused = true
 			}
@@ -88,7 +88,7 @@ class GLRenderer : GLSurfaceView.Renderer {
 					projectile.update()
 					// TODO: Check collision of projectiles with enemies
 					Global.enemies.forEach { enemy ->
-						if (projectile.checkCollision(enemy)) {
+						if (projectile.checkCollision(enemy.position)) {
 							Global.points++
 							enemy.destroy()
 							projectile.destroyed = true

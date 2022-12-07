@@ -13,9 +13,9 @@ open class Object(var id: String, var position: Vector2D) {
 	var geometry = ArrayList<Triangle>()
 	var matrix = FloatArray(16)
 
-	fun checkCollision(other: Object): Boolean {
+	fun checkCollision(other: Vector2D): Boolean {
 		val a = Box(position)
-		val b = Box(other.position)
+		val b = Box(other)
 		if (a.x < b.x + b.s && a.x + a.s > b.x && a.y < b.y + b.s && a.s + a.y > b.y) { return true }
 		return false
 	}
